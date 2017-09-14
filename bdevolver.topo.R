@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 suppressPackageStartupMessages(library(pegas))
 suppressPackageStartupMessages(library(phangorn))
 suppressPackageStartupMessages(library(optparse))
@@ -8,7 +6,7 @@ option_list = list(
   make_option(c("-p","--prefix"), type="character", default="out", help="Output filename written to ${PREFIX}.treedistcsv [default=%default]"),
   make_option(c("-s","--trees2"), type="character", default=NULL, help="Second multitree file in Newick format; if none provided then comparisons within trees1 are computed"),
   make_option(c("-v","--verbose"), type="integer", default=0, help="Verboseness (0=quiet, 1=verbose) [default=%default]")
-); 
+);
 opt_parser=OptionParser(option_list=option_list);
 opt=parse_args(opt_parser);
 

@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 ## load option parsing lib
 suppressPackageStartupMessages(library(optparse))
 suppressPackageStartupMessages(library(pegas))
@@ -7,7 +5,7 @@ option_list = list(
   make_option(c("-f","--fasta"), type="character", default="input.fasta", help="Input haplotype sequences in fasta format [default=%default]"),
   make_option(c("-s","--stats"), type = "character", default = "input.stats", help = "Input stats file [default=%default]")
 #  make_option(c("-G","--graphic"), type = "character", default = "png", help = "Type of graphical output desired (can be png, jpeg, svg, pdf) [default=%default]")
-); 
+);
 opt_parser=OptionParser(option_list=option_list);
 opt=parse_args(opt_parser);
 
@@ -53,10 +51,10 @@ a<-array(NA,nrow(dna))
 ## generate NA matrix where rows == individual cols == genotype
 m<-matrix(NA,nrow=(nrow(dna)/2),ncol=2)
 
-for (i in 1:(length(attr(hap,"index")))) { 
-  for (j in 1:(length(attr(hap,"index")[[i]]))) { 
+for (i in 1:(length(attr(hap,"index")))) {
+  for (j in 1:(length(attr(hap,"index")[[i]]))) {
     a[attr(hap,"index")[[i]][j]]<-i ## insert haplotype number into array a at appropriate index
-  } 
+  }
 }
 
 ## then put genotype info into matrix m
@@ -100,7 +98,7 @@ cat("%GC:",GC.content(dna),"\n~~~\n")
 # which shows the number of inds with each genotype, ie 3 inds with genotype 1|1, 2 with 1|2 etc.
 
 ## generate all possible combinations of 3 haplotypes
-## cycles has rows = 1:3, haplotype number, cols = all possible combo's 
+## cycles has rows = 1:3, haplotype number, cols = all possible combo's
 #cycles<-combn(1:nrow(hap),3)
 #colnames(cycles)<-rep("FALSE",ncol(cycles))
 #for (j in (1:ncol(cycles))) {
@@ -108,7 +106,7 @@ cat("%GC:",GC.content(dna),"\n~~~\n")
 #  if (tab[cycles[1,j],cycles[2,j]]>0) count<-count+1
 #  if (tab[cycles[1,j],cycles[3,j]]>0) count<-count+1
 #  if (tab[cycles[2,j],cycles[3,j]]>0) count<-count+1
-#  if (count==3) {colnames(cycles)[j]<-"TRUE"} else {colnames(cycles)[j]<-"FALSE"}	
+#  if (count==3) {colnames(cycles)[j]<-"TRUE"} else {colnames(cycles)[j]<-"FALSE"}
 #}
 ## LOGIC
 ## For there to be a cycle or 'triplet', need 3 heterozygous inds

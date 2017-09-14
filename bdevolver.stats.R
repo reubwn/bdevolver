@@ -1,5 +1,3 @@
-#!/usr/bin/env Rscript
-
 suppressPackageStartupMessages(library(pegas))
 
 filenames<-Sys.glob("*.fa")
@@ -11,14 +9,14 @@ for (f in (1:length(filenames))) {
 	currFile<-filenames[f]
 	dna<-read.dna(currFile,format="fasta")
 	hap<-haplotype(dna)
-	
+
 	a<-array(NA,nrow(dna))
 	m<-matrix(NA,nrow=(nrow(dna)/2),ncol=2)
 
-	for (i in 1:(length(attr(hap,"index")))) { 
-  		for (j in 1:(length(attr(hap,"index")[[i]]))) { 
+	for (i in 1:(length(attr(hap,"index")))) {
+  		for (j in 1:(length(attr(hap,"index")[[i]]))) {
     			a[attr(hap,"index")[[i]][j]]<-i ## insert haplotype number into array a at appropriate index
-  		} 
+  		}
 	}
 
 	m[,1]<-a[seq(1,(nrow(dna))-1,2)] ## odd indices, allele A
