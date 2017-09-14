@@ -1,6 +1,13 @@
 # bdevolver
 simulating nucleotide evolution with mutation, drift, gene conversion and horizontal transfer
 
+### libraries
+Requires the libraries `optparse` and `pegas`:
+```R
+install.packages("optparse")
+install.packages("pegas")
+```
+
 ## bdevolver.simulation.R
 Main simulation script. Outputs sequences in fasta format.
 
